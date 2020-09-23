@@ -36,7 +36,7 @@ function debounce(f, ms) {
     };
   };
   
-  let f = debounce(alert, 1000);
+let f = debounce(alert, 1000);
   
 //   f(1); // выполняется немедленно
 //   f(2); // проигнорирован
