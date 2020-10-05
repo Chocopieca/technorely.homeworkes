@@ -1,0 +1,6 @@
+*.json
+/dist
+.eslintrc
+*.config.js
+*.min.css
+*.min.js
