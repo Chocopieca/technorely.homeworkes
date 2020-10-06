@@ -6,7 +6,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
-// const StylelintPlugin = require('stylelint-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
+const postcss = require("postcss");
 
 
 const isDev = process.env.NODE_ENV === "development";
@@ -39,11 +40,19 @@ const cssloader = (loader) => {
 				reloadAll: true,
 			},
 		},
-        "css-loader"
+        "css-loader",
+        {
+            loader: "postcss-loader",
+            options: {
+                postcssOptions: {
+                    config: path.resolve(__dirname, 'postcss.config.js')
+                },
+            }
+        }
 	];
 
 	if (loader) {
-		loaders.push(loader);
+    loaders.push(loader)
 	}
 
 	return loaders;
@@ -98,7 +107,7 @@ const plagins = () => {
         }),
         // new StylelintPlugin({
         //     configFile: path.resolve(__dirname, ".stylelintrc"),
-        //     context: path.resolve(__dirname, "src/styles")
+        //     context: path.resolve(__dirname, "src/styles"), 
         // })
 	];
 
@@ -138,7 +147,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.css$/,
-				use: cssloader("p"),
+				use: cssloader(),
 			},
 			{
 				test: /\.s[ac]ss$/,

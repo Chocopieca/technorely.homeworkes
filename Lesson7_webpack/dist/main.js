@@ -533,7 +533,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _comp_constant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @comp/constant */ "./components/constant.js");
 /* harmony import */ var _comp_surching__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @comp/surching */ "./components/surching.js");
 /* harmony import */ var _comp_logo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @comp/logo */ "./components/logo.js");
-!(function webpackMissingModule() { var e = new Error("Cannot find module '@sty/bootstrap.min.css'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _sty_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sty/bootstrap.min.css */ "./styles/bootstrap.min.css");
+/* harmony import */ var _sty_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_sty_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _sty_style_sass__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @sty/style.sass */ "./styles/style.sass");
 /* harmony import */ var _sty_style_sass__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_sty_style_sass__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _img_webpack_logo_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/img/webpack-logo.png */ "./img/webpack-logo.png");
@@ -545,6 +546,19 @@ __webpack_require__.r(__webpack_exports__);
 
 _comp_constant__WEBPACK_IMPORTED_MODULE_0__["FORM"].onsubmit = _comp_surching__WEBPACK_IMPORTED_MODULE_1__["default"];
 Object(_comp_logo__WEBPACK_IMPORTED_MODULE_2__["default"])(_img_webpack_logo_png__WEBPACK_IMPORTED_MODULE_5__["default"]);
+
+/***/ }),
+
+/***/ "./styles/bootstrap.min.css":
+/*!**********************************!*\
+  !*** ./styles/bootstrap.min.css ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+    if(false) { var cssReload; }
+  
 
 /***/ }),
 
