@@ -1,0 +1,12 @@
+li {
+    list-style-type: none;
+    margin: 10px;
+    padding: 5px;
+    border: 2px solid black;
+}
+
+img {
+    width: 100px;
+    border: 1px solid black;
+    border-radius: 50%;
+}

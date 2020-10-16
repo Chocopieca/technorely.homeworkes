@@ -5,8 +5,6 @@ import {
     Nav
 } from 'react-bootstrap';
 
-import '../index.css';
-
 class Header extends React.Component{
     render() {
         return (

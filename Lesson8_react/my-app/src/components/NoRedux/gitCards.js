@@ -1,7 +1,20 @@
 import React, {useState, useEffect} from 'react'
 import {map} from 'underscore'
+import {
+    Row,
+    Col
+} from 'react-bootstrap'
 
-function Reqaset() {
+function isAvatar(avatar) {
+    const NotFound = 'https://i.pinimg.com/originals/8a/eb/d8/8aebd875fbddd22bf3971c3a7159bdc7.png'
+    let Photo = avatar
+
+    if (!avatar) Photo = NotFound
+    
+    return Photo
+}
+
+function GitCards() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
@@ -31,9 +44,13 @@ function Reqaset() {
             <ul>
                 {map(items, ({login, id, avatar_url, html_url}) => (
                     <li key={id}>
-                        <img src={avatar_url} />
-                        {login}
-                        {html_url}
+                        <Row>
+                            <Col xs={2}><img alt="logo" src={isAvatar(avatar_url)} /></Col>
+                            <Col xs={10}>
+                                <div className="login">{login}</div>
+                                <a href={html_url}>{html_url}</a>  
+                            </Col>
+                        </Row>
                     </li>
                 )
                 )}
@@ -42,4 +59,4 @@ function Reqaset() {
     }
 }
 
-export default Reqaset
+export default GitCards
