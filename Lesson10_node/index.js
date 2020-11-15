@@ -16,28 +16,27 @@ app.get('/', (req, res) => {
     res.send('Hi')
 })
 
-app.get('/:name', (req, res, next) => {
+app.get('/:name', async (req, res, next) => {
     const fileName = req.params.name
 
-    arhivator(fileName)
-
-    function send(req, res, name) {
-        const options = {
-            root: path.join(__dirname, '/upload'),
-            dotfiles: 'deny',
-            headers: {
-                'x-timestamp': Date.now(),
-                'x-sent': true
-            }
+    await arhivator(fileName)
+    
+    const options = {
+        root: path.join(__dirname, '/upload'),
+        dotfiles: 'deny',
+        headers: {
+            'x-timestamp': Date.now(),
+            'x-sent': true
         }
+    }
 
-        res.sendFile(name, options, err => {
-        if(err) {
+    res.sendFile(fileName, options, err => {
+        if (err) {
             next(err)
         } else {
-            console.log('Sent: ', name);
+            console.log('Sent: ', fileName);
         }
-    })}
+    })
 })
 
 app.listen(PORT, () => {
@@ -46,15 +45,18 @@ app.listen(PORT, () => {
 
 
 //arhivator
- function arhivator(name) {
-    fs.mkdir(path.join(__dirname, '/upload'), () => {
+function arhivator(name) {
+    return new Promise((resolve) => {
+        fs.mkdirSync(path.join(__dirname, '/upload'), {recursive: true})
         tar.c(
-                {
-                    gzip: true,
-                    sync: true
-                },
-                [path.join(__dirname, '/assets')]
+            {
+                gzip: true,
+                sync: true,
+                file: path.join(__dirname, '/upload', `${name}`)
+            },
+            [path.join(__dirname, '/assets')]
         )
-        .pipe(fs.createWriteStream(path.join(__dirname, '/upload', `${name}`)))
+        resolve()
     })
+    
 }
